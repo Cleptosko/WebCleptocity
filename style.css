@@ -1,0 +1,58 @@
+/* 🌐 Réglages de base. */
+body { /* Permet de modifier tous ce qu'il y a dans : body (= toute la page) */
+  margin: 0; /* -> Enlève le contour blanc. */
+  font-family: Arial, sans-serif; /* -> Polices, princiaple et secondaire de l'ensemble des textes. */
+  background-color: #f9f9f9; /* -> Couleur du fond. */
+  color: #333; /* -> Couleur du texte. */
+}
+
+/* 🔝 Barre de navigation tout en haut. */
+.navbar { /* Permet de mofier tous ce qu'il y a dans : navbar */
+  display: flex; /* Permet de placer les éléments en ligne */
+  justify-content: space-between; /* -> Sépare les éléments au maximum sur toute la ligne */
+  background-color: #1e1e1e; /* -> Couleur de la barre */
+  padding: 15px 15px; /* -> Ajoute de l'espace entre les liens et la bordure de la navbar */
+}
+
+.navbar a { /* Permet de modofier les liens dans navbar (voir <a> dans index.html) */
+  color: white; /* -> Couleur des liens dans la navbar */
+  text-decoration: none; /* Permet de supprimé le soulignement des liens présent par défaut */
+  padding: 8px 12px; /* -> Donne de l'espace autour du lien pour ressemblé à un bouton */
+  font-weight: bold; /* Permet de mettre de texte en gras */
+  transition: background-color 0.3s; /* Permet de créer un effet fluide quand la souris passe dessus */
+  border-radius: 4px; /* Permet d'arrondir les bords */
+}
+
+.navbar a:hover { /* Action à réalisé quand la souris passe sur le lien <a> présent dans navbar (en gros sur les boutons) / :hover = s'active quand la souris passe dessus */
+  background-color: #333; /* Permet de créer un fond clair */
+}
+
+/* 🧭 Positionnement des onglets */
+
+.nav-left, 
+.nav-right { 
+  width: 25%; /* Width insique la largueur réservé à "nav-left" et "nav-right" */
+  text-align: center; /* Permet de centrer le texte */
+}
+.nav-center { 
+  width: 30%; /* Width insique la largueur réservé à "nav-center" */
+  text-align: center; /* Permet de centrer le texte */
+}
+
+/* 📦 Zones générales */
+.zone {
+  padding: 40px 20px; /* Permet de donner une taille à une boîte pour y ranger des éléments */
+  margin: 20px auto; /* Permet de séparer cett eboîte avec d'autre éléments exterieur d'une certaine distance */
+  max-width: 1000px; /* Permet de limiter la taille de la boîte (en cas d'écran trop petit/grand pour le pas avoir de probleme) */
+  background-color: white; /* Donne une couleur de fond à la boîte */
+  border-radius: 10px; /* Permet d'arrondir les coins */
+  box-shadow: 0 0 10px rgba(0,0,0,0.05); /* Permet de créer une ombre flou autour de la boîte */
+}
+
+/* 🦶 Footer = tout en bas de la page */
+.footer {
+  text-align: center; /* Centre le texte */
+  font-size: 80%; /* Regle la taille */
+  color: #666; /* Lui donne une couleur grise */
+  background-color: #f1f1f1; /* Et un fond gris clair */
+}
