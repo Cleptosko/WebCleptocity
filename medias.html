@@ -18,24 +18,123 @@
     </nav>
 
     <!-- Bannière spécifique à Médias -->
-    <section class="zone banner">
-        <div class="banner-background" style="background-image: url('images/gif.gif ');"></div>
-        <div class="banner-content">
-            <h1 class="impact-title">Bienvenue dans <span>la section Médias</span></h1>
-            <p class="impact-subtitle">Les actualités et événements récents.</p>
+   <section class="zone banner">
+    <div class="banner-background" style="background-image: url('images/gif.gif');"></div>
+    <div class="banner-content">
+        <h1 class="media-title">
+            Bienvenue dans la section <span>Médias</span>
+        </h1>
+        <p class="media-subtitle">
+            Les actualités et événements récents.
+        </p>
+    </div>
+</section>
+
+    <!-- Section Vidéos -->
+    <section id="media-videos" class="zone">
+        <h2>Vidéos</h2>
+        <div class="video-container">
+            <video controls src="videos/video1.mp4"></video>
+            <video controls src="videos/video2.mp4"></video>
+            <video controls src="videos/video3.mp4"></video>
         </div>
     </section>
 
-    <!-- Contenu de Médias -->
-   <section id="media-zone" class="zone">
-    <h1>Bienvenue dans la section Médias</h1>
-    <p>Découvrez les actualités de Cleptocity et les événements récents.</p>
-</section>
+    <!-- Section Affaire -->
+    <section class="zone">
+        <h2 style="color: red;">Affaire</h2>
+        <div class="affaire-container">
+            <p class="affaire-text">
+                <span class="zizifieur-highlight">Plongez dans l'histoire captivante du Zizifieur</span>
+            </p>
+            <!-- Image déclenchant la modale -->
+            <img src="images/zizifieur1.jpeg" alt="Zizifieur 1" class="affaire-image" id="open-modal">
+        </div>
+    </section>
+
+    <!-- Section Galerie d'Images -->
+    <section class="zone">
+        <h2>Galerie d'Images</h2>
+        <div class="grid-container">
+            <div class="grid-item">
+                <img src="images/image1.jpg" alt="Image 1">
+                <p>Moment fort 1</p>
+            </div>
+            <div class="grid-item">
+                <img src="images/image2.jpg" alt="Image 2">
+                <p>Moment fort 2</p>
+            </div>
+            <div class="grid-item">
+                <img src="images/image3.jpg" alt="Image 3">
+                <p>Moment fort 3</p>
+            </div>
+        </div>
+    </section>
+
+    <!-- Section Carte Départements -->
+    <section class="zone">
+        <h2>Cartes</h2>
+        <div class="grid-container">
+            <div class="grid-item">
+                <img src="images/departement1.jpg" alt="Département 1">
+                <p>Cleptocity</p>
+            </div>
+            <div class="grid-item">
+                <img src="images/departement2.jpg" alt="Département 2">
+                <p>Cleptusine</p>
+            </div>
+            <div class="grid-item">
+                <img src="images/departement3.jpg" alt="Département 3">
+                <p>Cleptoparc</p>
+            </div>
+        </div>
+    </section>
+
+    <!-- Modale -->
+    <div id="modal" class="modal">
+        <div class="modal-content">
+            <span id="close-modal" class="close">&times;</span>
+            <h2>Le Zizifieur</h2>
+            <p>
+                Voici une page où vous pouvez écrire ce que vous voulez concernant le Zizifieur ou autre contenu lié à cette image. Remplissez librement ce texte selon vos besoins !
+            </p>
+        </div>
+    </div>
 
     <!-- Pied de page -->
     <footer class="zone footer">
         <p>© 2025 WebCleptocity – Plus qu'une simple ville.</p>
     </footer>
+
+ <script>
+    // Récupère les éléments nécessaires
+    const modal = document.getElementById('modal');
+    const openModal = document.getElementById('open-modal');
+    const closeModal = document.getElementById('close-modal');
+
+    // Active la modale uniquement lors du clic sur l'image
+    openModal.addEventListener('click', () => {
+        modal.style.display = "flex"; // Change display en flex pour centrer la modale
+    });
+
+    // Ferme la modale lorsqu'on clique sur le bouton de fermeture "X"
+    closeModal.addEventListener('click', () => {
+        modal.style.display = "none"; // Cache la modale
+    });
+
+    // Ferme la modale lorsqu'on clique à l'extérieur du contenu
+    window.addEventListener('click', (event) => {
+        if (event.target === modal) {
+            modal.style.display = "none"; // Cache la modale
+        }
+    });
+
+    // Supprimer tout déclenchement non désiré
+    window.onload = function() {
+        modal.style.display = "none"; // S'assure que la modale reste cachée au chargement
+    };
+</script>
+
 
 </body>
 </html>
