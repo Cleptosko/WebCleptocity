@@ -189,12 +189,12 @@ body {
 
 /* 🎨 Texte Impactant */
 .impact-title {
-    font-size: 3.5rem;
+    font-size: 3rem; /* Taille réduite */
     font-weight: bold;
     text-transform: uppercase;
-    color: #FFFFFF; /* Texte principal en blanc */
+    color: #FFFFFF; /* Texte principal blanc */
     letter-spacing: 3px;
-    text-shadow: 2px 2px 10px rgba(0, 0, 0, 0.5); /* Subtile ombre pour lisibilité */
+    text-shadow: 2px 2px 10px rgba(0, 0, 0, 0.5); /* Ombre subtile */
 }
 
 .impact-title .highlight {
@@ -203,12 +203,23 @@ body {
 }
 
 .impact-subtitle {
-    font-size: 1.8rem;
-    margin-top: 15px;
-    color: #000000; /* Texte secondaire en noir */
+    font-size: 1.6rem; /* Taille réduite */
+    margin-top: 10px;
+    color: #000000; /* Sous-titre en noir */
     font-weight: 400;
     text-transform: uppercase;
 }
+
+.additional-subtitle {
+    font-size: 1.4rem; /* Taille légèrement plus petite */
+    margin-top: 15px;
+    color: #32CD32; /* Vert lumineux */
+    font-weight: 400;
+    text-transform: uppercase;
+    text-shadow: 0 0 10px rgba(0, 128, 0, 0.5); /* Effet lumineux vert */
+    text-align: center; /* Centré */
+}
+
 
 /* 📦 Zones générales */
 .zone {
@@ -225,36 +236,39 @@ body {
     transform: scale(1.02);
 }
 
-/* 🗺 Carte */
-.map img {
-    width: 100%;
-    max-width: 900px;
-    height: auto;
-    border-radius: 10px;
-    box-shadow: 0 0 10px rgba(0, 0, 0, 0.15);
-    display: block;
-    margin: 0 auto;
+/* Carte plein écran */
+.map-full {
+    width: 100%; /* L'image occupe toute la largeur */
+    height: 100%; /* L'image occupe toute la hauteur */
+    display: block; /* S'assure que l'image reste un bloc */
+    object-fit: cover; /* Ajuste l'image pour remplir la zone */
+    border-radius: 0; /* Supprime les coins arrondis */
+    margin: 0; /* Supprime les marges */
 }
 
-/* Conteneur de vidéos */
+/* Conteneur des vidéos */
 .video-container {
-    display: flex;
-    flex-wrap: wrap;
-    justify-content: space-between;
-    gap: 20px;
+    display: flex; /* Place les vidéos côte à côte */
+    justify-content: space-around; /* Ajoute de l'espace uniforme entre les vidéos */
+    flex-wrap: wrap; /* Permet un retour à la ligne sur petits écrans */
+    gap: 20px; /* Espacement entre les vidéos */
+    margin: 20px auto; /* Centre la section avec un espacement vertical */
 }
 
-video {
-    width: 100%;
-    max-width: 300px;
-    border-radius: 8px;
-    box-shadow: 0 0 15px rgba(0, 0, 0, 0.3);
-    transition: transform 0.3s ease;
+/* Style pour chaque vidéo */
+.video-item {
+    border-radius: 15px; /* Ajoute des bordures arrondies */
+    overflow: hidden; /* Cache les débordements pour les bordures arrondies */
+    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.3); /* Ajoute une ombre subtile */
 }
 
-video:hover {
-    transform: scale(1.05);
+/* Style spécifique aux iframes */
+.rounded-frame {
+    border-radius: 15px; /* Ajoute des bordures arrondies à l'iframe directement */
+    width: 100%; /* L'iframe occupe toute la largeur du conteneur */
+    height: auto; /* Ajuste automatiquement la hauteur */
 }
+
 
 /* Texte pour Affaire */
 .affaire-text {
@@ -290,37 +304,105 @@ video:hover {
 
 /* Modale */
 .modal {
-    display: none;
+    display: none; /* Cachée par défaut */
     position: fixed;
+    z-index: 1000;
     top: 0;
     left: 0;
     width: 100%;
     height: 100%;
-    background: rgba(255, 255, 255, 0.9);
-    backdrop-filter: blur(5px);
-    z-index: 1000;
-    display: flex;
+    background-color: rgba(0, 0, 0, 0.8); /* Arrière-plan sombre */
+    backdrop-filter: blur(10px); /* Ajoute un effet de flou */
     justify-content: center;
     align-items: center;
 }
 
-/* Contenu de la modale */
 .modal-content {
-    background: #FFFFFF;
-    padding: 20px;
-    border-radius: 10px;
-    box-shadow: 0 0 20px rgba(0, 0, 0, 0.2);
-    max-width: 600px;
-    text-align: center;
+    max-width: 90%;
+    max-height: 90%;
+    border-radius: 10px; /* Ajoute des coins arrondis */
+    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.5); /* Ombre subtile */
 }
 
 .close {
     position: absolute;
-    top: 10px;
-    right: 10px;
-    font-size: 1.5rem;
+    top: 20px;
+    right: 30px;
+    font-size: 2rem;
+    color: #FFFFFF;
     cursor: pointer;
-    color: #000000;
+    transition: transform 0.2s ease;
+}
+
+.close:hover {
+    transform: scale(1.2);
+    color: #FF0000; /* Rouge au survol */
+}
+
+/* Miniatures */
+.thumbnail {
+    width: 100%;
+    border-radius: 8px; /* Coins arrondis pour les miniatures */
+    cursor: pointer;
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+.thumbnail:hover {
+    transform: scale(1.05); /* Agrandit légèrement au survol */
+    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.5); /* Ombre subtile au survol */
+}
+
+/* Conteneur principal de la modale */
+.modal {
+    display: none; /* Cachée par défaut */
+    position: fixed;
+    z-index: 1000;
+    left: 0;
+    top: 0;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(0, 0, 0, 0.8); /* Arrière-plan sombre avec transparence */
+    backdrop-filter: blur(10px); /* Ajoute un effet de flou */
+    justify-content: center;
+    align-items: center;
+    overflow: hidden;
+}
+
+/* Contenu de la modale (image) */
+.modal-content {
+    max-width: 90%;
+    max-height: 90%;
+    border-radius: 10px; /* Bord arrondi pour l'image */
+    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.5); /* Ombre subtile */
+}
+
+/* Bouton de fermeture */
+.close {
+    position: absolute;
+    top: 20px;
+    right: 30px;
+    font-size: 2rem;
+    color: #FFFFFF;
+    cursor: pointer;
+    transition: transform 0.2s ease;
+}
+
+.close:hover {
+    transform: scale(1.2); /* Légèrement plus grand au survol */
+    color: #FF0000; /* Rouge au survol */
+}
+
+/* Miniatures des images */
+.thumbnail {
+    width: 100%; /* Taille par défaut des images */
+    border-radius: 8px; /* Bord arrondi */
+    cursor: pointer;
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+.thumbnail:hover {
+    transform: scale(1.05); /* Agrandit légèrement au survol */
+    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.5); /* Ombre subtile au survol */
 }
 
 /* Galerie d'Images */

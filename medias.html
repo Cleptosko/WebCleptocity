@@ -30,15 +30,41 @@
     </div>
 </section>
 
-    <!-- Section Vidéos -->
-    <section id="media-videos" class="zone">
-        <h2>Vidéos</h2>
-        <div class="video-container">
-            <video controls src="videos/video1.mp4"></video>
-            <video controls src="videos/video2.mp4"></video>
-            <video controls src="videos/video3.mp4"></video>
+<!-- Section Vidéos -->
+<section id="media-videos" class="zone">
+    <h2>Vidéos</h2>
+    <div class="video-container">
+        <!-- Vidéo 1 -->
+        <div class="video-item">
+            <iframe 
+                width="560" 
+                height="315" 
+                src="https://www.youtube.com/embed/UXHC_0Xr64k" 
+                title="YouTube video player 1" 
+                frameborder="0" 
+                allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" 
+                allowfullscreen 
+                class="rounded-frame">
+            </iframe>
         </div>
-    </section>
+        <!-- Vidéo 2 -->
+        <div class="video-item">
+            <iframe 
+                width="560" 
+                height="315" 
+                src="https://www.youtube.com/embed/cBYYzkYpgEM" 
+                title="YouTube video player 2" 
+                frameborder="0" 
+                allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" 
+                allowfullscreen 
+                class="rounded-frame">
+            </iframe>
+        </div>
+    </div>
+</section>
+
+
+
 
     <!-- Section Affaire -->
     <section class="zone">
@@ -52,43 +78,43 @@
         </div>
     </section>
 
-    <!-- Section Galerie d'Images -->
-    <section class="zone">
-        <h2>Galerie d'Images</h2>
-        <div class="grid-container">
-            <div class="grid-item">
-                <img src="images/image1.jpg" alt="Image 1">
-                <p>Moment fort 1</p>
-            </div>
-            <div class="grid-item">
-                <img src="images/image2.jpg" alt="Image 2">
-                <p>Moment fort 2</p>
-            </div>
-            <div class="grid-item">
-                <img src="images/image3.jpg" alt="Image 3">
-                <p>Moment fort 3</p>
-            </div>
+<!-- Section Galerie d'Images -->
+<section class="zone">
+    <h2>Galerie d'Images</h2>
+    <div class="grid-container">
+        <div class="grid-item">
+            <img src="images/btn.png" alt="Image 1" class="thumbnail" onclick="openModal(this, 'Texte pour boîte de nuit')">
+            <p>Boite de nuit</p>
         </div>
-    </section>
+        <div class="grid-item">
+            <img src="images/hotel.png" alt="Image 2" class="thumbnail" onclick="openModal(this, 'Texte pour Clepthotel')">
+            <p>Clepthotel</p>
+        </div>
+        <div class="grid-item">
+            <img src="images/bat.png" alt="Image 3" class="thumbnail" onclick="openModal(this, 'Texte pour bâtiment luxueux')">
+            <p>Bâtiment luxueux</p>
+        </div>
+    </div>
+</section>
 
-    <!-- Section Carte Départements -->
-    <section class="zone">
-        <h2>Cartes</h2>
-        <div class="grid-container">
-            <div class="grid-item">
-                <img src="images/departement1.jpg" alt="Département 1">
-                <p>Cleptocity</p>
-            </div>
-            <div class="grid-item">
-                <img src="images/departement2.jpg" alt="Département 2">
-                <p>Cleptusine</p>
-            </div>
-            <div class="grid-item">
-                <img src="images/departement3.jpg" alt="Département 3">
-                <p>Cleptoparc</p>
-            </div>
+<!-- Section Carte Départements -->
+<section class="zone">
+    <h2>Cartes</h2>
+    <div class="grid-container">
+        <div class="grid-item">
+            <img src="images/planville.jpeg" alt="Département 1" class="thumbnail" onclick="openModal(this)">
+            <p>Cleptocity</p>
         </div>
-    </section>
+        <div class="grid-item">
+            <img src="images/planusine.jpeg" alt="Département 2" class="thumbnail" onclick="openModal(this)">
+            <p>Clept-usine</p>
+        </div>
+        <div class="grid-item">
+            <img src="images/planparc.jpeg" alt="Département 3" class="thumbnail" onclick="openModal(this)">
+            <p>Cleptoparc</p>
+        </div>
+    </div>
+</section>
 
     <!-- Modale -->
     <div id="modal" class="modal">
@@ -100,6 +126,31 @@
             </p>
         </div>
     </div>
+	
+<!-- Modale pour l'agrandissement des images -->
+<div id="image-modal" class="modal" onclick="closeModal(event)">
+    <span class="close" onclick="closeModal(event)">&times;</span>
+    <img id="modal-image" class="modal-content">
+</div>
+
+<script>
+// Fonction pour ouvrir la modale
+function openModal(img) {
+    const modal = document.getElementById('image-modal');
+    const modalImg = document.getElementById('modal-image');
+    modal.style.display = 'flex'; // Affiche la modale
+    modalImg.src = img.src; // Charge l'image cliquée
+}
+
+// Fonction pour fermer la modale
+function closeModal(event) {
+    // Vérifie si le clic est sur la modale ou sur le bouton de fermeture
+    const modal = document.getElementById('image-modal');
+    if (event.target === modal || event.target.classList.contains('close')) {
+        modal.style.display = 'none'; // Cache la modale
+    }
+}
+</script>
 
     <!-- Pied de page -->
     <footer class="zone footer">
