@@ -7,15 +7,13 @@
 </head>
 <body>
 
-    <!-- Logo fixe -->
-    <img class="fixed-logo" src="images/logo.png" alt="Logo Cleptocity">
-
-    <!-- Barre de navigation -->
-    <nav class="navbar">
-        <a class="nav-left" href="medias.html">Médias</a>
-        <a class="nav-center" href="index.html">Accueil</a>
-        <a class="nav-right" href="tourisme.html">Tourisme</a>
-    </nav>
+<!-- Barre de navigation -->
+<nav class="navbar">
+    <img src="images/logo.png" alt="Logo Cleptocity" class="navbar-logo">
+    <a class="nav-left" href="medias.html">Médias</a>
+    <a class="nav-center" href="index.html">Accueil</a>
+    <a class="nav-right" href="tourisme.html">Tourisme</a>
+</nav>
 
     <!-- Bannière spécifique à Tourisme -->
 <section class="zone banner tourisme">
@@ -71,6 +69,24 @@
     <footer class="zone footer">
         <p>© 2025 WebCleptocity – Explorez les merveilles de Cleptocity.</p>
     </footer>
+
+<script>
+    let lastScrollTop = 0;
+    const navbar = document.querySelector('.navbar');
+
+    window.addEventListener('scroll', () => {
+        const scrollTop = window.pageYOffset || document.documentElement.scrollTop;
+        
+        if (scrollTop > lastScrollTop) {
+            // Scrolling vers le bas - cache la navbar
+            navbar.style.top = '-80px'; // Déplace la navbar hors de la vue
+        } else {
+            // Scrolling vers le haut - montre la navbar
+            navbar.style.top = '0'; // Ramène la navbar à sa place
+        }
+        lastScrollTop = scrollTop;
+    });
+</script>
 
 </body>
 </html>

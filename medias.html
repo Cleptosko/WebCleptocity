@@ -7,15 +7,13 @@
 </head>
 <body>
 
-    <!-- Logo fixe -->
-    <img class="fixed-logo" src="images/logo.png" alt="Logo Cleptocity">
-
-    <!-- Barre de navigation -->
-    <nav class="navbar">
-        <a class="nav-left" href="medias.html">Médias</a>
-        <a class="nav-center" href="index.html">Accueil</a>
-        <a class="nav-right" href="tourisme.html">Tourisme</a>
-    </nav>
+<!-- Barre de navigation -->
+<nav class="navbar">
+    <img src="images/logo.png" alt="Logo Cleptocity" class="navbar-logo">
+    <a class="nav-left" href="medias.html">Médias</a>
+    <a class="nav-center" href="index.html">Accueil</a>
+    <a class="nav-right" href="tourisme.html">Tourisme</a>
+</nav>
 
     <!-- Bannière spécifique à Médias -->
 <section class="zone banner media">
@@ -83,79 +81,61 @@
     <h2>Galerie d'Images</h2>
     <div class="grid-container">
         <div class="grid-item">
-            <img src="images/btn.png" alt="Image 1" class="thumbnail" onclick="openModal(this, 'Texte pour boîte de nuit')">
-            <p>Boite de nuit</p>
+            <img src="images/btn.png" alt="Boite de Nuit" class="thumbnail" onclick="openImageModal(this)">
+            <p>Boite de Nuit</p>
         </div>
         <div class="grid-item">
-            <img src="images/hotel.png" alt="Image 2" class="thumbnail" onclick="openModal(this, 'Texte pour Clepthotel')">
+            <img src="images/hotel.png" alt="Clepthotel" class="thumbnail" onclick="openImageModal(this)">
             <p>Clepthotel</p>
         </div>
         <div class="grid-item">
-            <img src="images/bat.png" alt="Image 3" class="thumbnail" onclick="openModal(this, 'Texte pour bâtiment luxueux')">
-            <p>Bâtiment luxueux</p>
+            <img src="images/bat.png" alt="Bâtiment Luxueux" class="thumbnail" onclick="openImageModal(this)">
+            <p>Bâtiment Luxueux</p>
         </div>
     </div>
 </section>
 
-<!-- Section Carte Départements -->
+<!-- Section Cartes -->
 <section class="zone">
     <h2>Cartes</h2>
     <div class="grid-container">
         <div class="grid-item">
-            <img src="images/planville.jpeg" alt="Département 1" class="thumbnail" onclick="openModal(this)">
+            <img src="images/planville.jpeg" alt="Plan de Cleptocity" class="thumbnail" onclick="openImageModal(this)">
             <p>Cleptocity</p>
         </div>
         <div class="grid-item">
-            <img src="images/planusine.jpeg" alt="Département 2" class="thumbnail" onclick="openModal(this)">
-            <p>Clept-usine</p>
+            <img src="images/planusine.jpeg" alt="Plan de Clept-Usine" class="thumbnail" onclick="openImageModal(this)">
+            <p>Clept-Usine</p>
         </div>
         <div class="grid-item">
-            <img src="images/planparc.jpeg" alt="Département 3" class="thumbnail" onclick="openModal(this)">
+            <img src="images/planparc.jpeg" alt="Plan de Cleptoparc" class="thumbnail" onclick="openImageModal(this)">
             <p>Cleptoparc</p>
         </div>
     </div>
 </section>
 
-    <!-- Modale -->
-    <div id="modal" class="modal">
-        <div class="modal-content">
-            <span id="close-modal" class="close">&times;</span>
-            <h2>Le Zizifieur</h2>
-            <p>
-                Voici une page où vous pouvez écrire ce que vous voulez concernant le Zizifieur ou autre contenu lié à cette image. Remplissez librement ce texte selon vos besoins !
-            </p>
-        </div>
+<!-- Modale du Zizifieur -->
+<div id="modal" class="modal">
+    <div class="modal-content">
+        <span id="close-modal" class="close" onclick="closeZizifieurModal()">&times;</span>
+        <h2>Le Zizifieur</h2>
+        <p>
+            Voici une page où vous pouvez écrire ce que vous voulez concernant le Zizifieur ou autre contenu lié à cette image. Remplissez librement ce texte selon vos besoins !
+        </p>
     </div>
+</div>
 	
-<!-- Modale pour l'agrandissement des images -->
-<div id="image-modal" class="modal" onclick="closeModal(event)">
-    <span class="close" onclick="closeModal(event)">&times;</span>
+	<!-- Modale pour agrandir les images -->
+<div id="image-modal" class="modal" onclick="closeImageModal(event)">
+    <span class="close" onclick="closeImageModal(event)">&times;</span>
     <img id="modal-image" class="modal-content">
 </div>
-
-<script>
-// Fonction pour ouvrir la modale
-function openModal(img) {
-    const modal = document.getElementById('image-modal');
-    const modalImg = document.getElementById('modal-image');
-    modal.style.display = 'flex'; // Affiche la modale
-    modalImg.src = img.src; // Charge l'image cliquée
-}
-
-// Fonction pour fermer la modale
-function closeModal(event) {
-    // Vérifie si le clic est sur la modale ou sur le bouton de fermeture
-    const modal = document.getElementById('image-modal');
-    if (event.target === modal || event.target.classList.contains('close')) {
-        modal.style.display = 'none'; // Cache la modale
-    }
-}
-</script>
 
     <!-- Pied de page -->
     <footer class="zone footer">
         <p>© 2025 WebCleptocity – Plus qu'une simple ville.</p>
     </footer>
+
 
  <script>
     // Récupère les éléments nécessaires
@@ -186,6 +166,48 @@ function closeModal(event) {
     };
 </script>
 
+<script>
+// Fonction pour ouvrir la modale avec l'image cliquée
+function openImageModal(img) {
+    const modal = document.getElementById('image-modal');
+    const modalImg = document.getElementById('modal-image');
+    
+    // Affiche la modale
+    modal.style.display = 'flex';
+    modalImg.src = img.src; // Charge l'image cliquée dans la modale
+
+    // Fixe la couleur des éléments texte dans la modale
+    const modalContent = modal.querySelector('.modal-content');
+    modalContent.style.color = "#FFFFFF"; // Définir la couleur du texte
+}
+
+// Fonction pour fermer la modale
+function closeImageModal(event) {
+    const modal = document.getElementById('image-modal');
+    // Vérifie si le clic est sur l'arrière-plan sombre ou sur la croix
+    if (event.target === modal || event.target.classList.contains('close')) {
+        modal.style.display = 'none'; // Cache la modale
+    }
+}
+</script>
+
+<script>
+    let lastScrollTop = 0;
+    const navbar = document.querySelector('.navbar');
+
+    window.addEventListener('scroll', () => {
+        const scrollTop = window.pageYOffset || document.documentElement.scrollTop;
+        
+        if (scrollTop > lastScrollTop) {
+            // Scrolling vers le bas - cache la navbar
+            navbar.style.top = '-80px'; // Déplace la navbar hors de la vue
+        } else {
+            // Scrolling vers le haut - montre la navbar
+            navbar.style.top = '0'; // Ramène la navbar à sa place
+        }
+        lastScrollTop = scrollTop;
+    });
+</script>
 
 </body>
 </html>
