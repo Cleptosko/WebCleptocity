@@ -1,27 +1,12 @@
 /* 🌐 Réglages de base */
 body {
-    margin: 0;
-    font-family: Arial, sans-serif;
-    background-image: url(images/caca.jpg); /* Image de fond pour tout le site */
-    background-size: cover;
-    background-position: center;
-    background-attachment: fixed; /* Fixe l'image pendant le défilement */
-    color: #333;
-}
-
-/* 🖼 Logo transparent fixe en bas à gauche */
-.fixed-logo {
-    position: fixed; /* L'image reste visible même en défilant */
-    bottom: 20px; /* Distance du bas de l'écran */
-    left: 20px; /* Distance de la gauche */
-    width: 250px; /* Augmente davantage la taille de l'image */
-    height: auto; /* Conserve les proportions de l'image */
-    z-index: 1000; /* Place l'image au-dessus des autres éléments */
-    opacity: 0.9; /* Ajoute une légère transparence */
-}
-
-.fixed-logo:hover {
-    opacity: 1; /* Rend l'image complètement visible au survol */
+    margin: 0; 
+    font-family: Arial, sans-serif; 
+    background-image: url(images/caca.jpg); 
+    background-size: cover; 
+    background-position: center; 
+    background-attachment: fixed; 
+    color: #333; 
 }
 
 /* 🔝 Barre de navigation */
@@ -48,43 +33,26 @@ body {
 /* 🧭 Positionnement des onglets */
 .nav-left, 
 .nav-right {
-    width: 25%;
+    width: 40%;
     text-align: center;
 }
 
 .nav-center {
-    width: 30%;
+    width: 45%;
     text-align: center;
 }
 
-/* Zone blanche par défaut (accueil ou autres sections) */
+/* Paramètre toute les zone en général */
 .zone {
-    padding: 40px 20px; /* Espacement interne par défaut */
+    padding: 40px 20px; 
     margin: 20px auto;
-    max-width: 1000px; /* Taille maximale standard */
+    max-width: 1000px; 
     background-color: white;
     border-radius: 10px;
     box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
-    height: auto; /* Ajustement automatique de la hauteur */
+    height: auto; 
 }
 
-/* Zone réduite pour Médias */
-#media-zone {
-    padding: 20px 170px; /* Réduit l'espacement interne */
-    max-width: 700px; /* Réduit la largeur maximale */
-    max-height: 250px; /* Limite la hauteur maximale */
-    box-shadow: 0 0 8px rgba(0, 0, 0, 0.08); /* Ombre moins dominante */
-}
-
-/* Zone réduite pour Tourisme */
-#tourism-zone {
-    padding: 20px 170px; /* Réduit l'espacement interne */
-    max-width: 700px; /* Réduit la largeur maximale */
-    max-height: 250px; /* Limite la hauteur maximale */
-    box-shadow: 0 0 8px rgba(0, 0, 0, 0.08); /* Ombre moins dominante */
-}
-
-/* 🎨 Bannière avec arrière-plan flou */
 .banner {
     position: relative;
     height: 300px;
@@ -100,7 +68,6 @@ body {
     background-image: url('images/gif.gif');
     background-size: cover;
     background-position: center;
-    filter: blur(0px); /* Effet flou */
     z-index: 1;
 }
 
@@ -109,7 +76,7 @@ body {
     z-index: 2;
     text-align: center;
     color: white;
-    padding: 80px 20px; /* padding: 80px 20px; */
+    padding: 80px 20px;
     text-shadow: 2px 2px 10px rgba(0, 0, 0, 0.8);
 }
 
@@ -119,11 +86,7 @@ body {
     text-align: center;
     line-height: 1.2;
 }
-
-.impact-title span {
-    color: #FFD700;
-}
-
+	
 .impact-subtitle {
     font-size: 1.5rem;
     margin-top: 15px;
@@ -135,5 +98,5 @@ body {
     font-size: 80%;
     color: #666;
     background-color: #f1f1f1;
-    padding: 10px 0; /* padding: 10px 0 */ 
+    padding: 10px 0px;
 }
