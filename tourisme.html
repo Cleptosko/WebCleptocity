@@ -1,26 +1,161 @@
-<!DOCTYPE html>
-<html lang="fr">
-<head>
-    <meta charset="utf-8">
-    <title>WebCleptocity - Tourisme</title>
-    <link rel="stylesheet" href="style.css">
-</head>
-<body>
+<!DOCTYPE html> <!-- Déclare le document HTML5 -->
+<html lang="fr"> <!-- Langue définie en français -->
 
-    <nav class="navbar">
-        <a class="nav-left" href="medias.html">Médias</a>
-        <a class="nav-center" href="index.html">Accueil</a>
-        <a class="nav-right" href="tourisme.html">Tourisme</a>
-    </nav>
+	<head>
+		<meta charset="utf-8"> <!-- Encodage des caractères -->
+		<title>Cleptocity - Tourisme</title> <!-- Titre de l’onglet (note : un ">" en trop ici ?) -->
+		<link rel="stylesheet" href="style.css"> <!-- Lien vers la feuille de style -->
+	</head>
 
-    <section class="zone banner">
-		<h1>Bienvenue sur le site officiel de la Ville de Cleptocity</h1>
-		<p>Pixelmon n'est qu'une porte à bien plus.</p>
-    </section>
+<body class="page-tourisme"> <!-- Début du corps de la page -->
 
-    <footer class="zone footer">
-        <p>© 2025 WebCleptocity – Plus qu'une simple ville.</p>
-    </footer>
+	<!-- Barre de navigation -->
+	<nav class="navbar"> <!-- Menu de navigation principal -->
+		<div class="nav-left">
+			<img src="images/logo.png" alt="Logo Cleptocity" class="navbar-logo"> <!-- Logo du site -->
+		</div>		
+		
+		<div class="nav-center">
+			<a class="b-medias bouton-vert" href="medias.html">Medias</a> <!-- Lien vers la page Médias -->
+			<a class="b-accueil bouton-vert" href="index.html">Accueil</a> <!-- Lien vers la page d'accueil -->
+			<a class="b-tourisme bouton-vert" href="tourisme.html">Tourisme</a> <!-- Lien vers la page Tourisme -->
+		</div>
+		
+		<div class="nav-right"></div> <!-- ✅ Bloc vide pour équilibrer la mise en page -->
+	</nav>
+
+	<!-- 🖼️ Bloc : .banner — Bannière de la page Tourisme -->
+	<section class="zone banner"> <!-- Conteneur principal -->
+		<div class="banner-background"></div> <!-- 🌄 Image de fond (commune) -->
+
+		<div class="banner-content"> <!-- 📝 Bloc de contenu texte -->
+			<h1 class="banner-title">Découvrez <span class="highlight">Cleptocity</span></h1> <!-- 🧾 Titre -->
+			<p class="banner-subtitle">Une aventure inoubliable vous attend.</p> <!-- 📍 Sous-titre -->
+		</div>
+	</section>
+
+	<!-- Section : Histoire de la Ville -->
+	<section class="zone"> <!-- Zone de contenu -->
+		<h2>Histoire de la Ville</h2> <!-- Titre de section -->
+		<p>
+			Cleptocity, un mélange d'histoire et de modernité, offre une richesse culturelle et des monuments historiques incontournables.
+			<!-- Texte introductif sur la ville -->
+		</p>
+	</section>
+	
+	<!-- Section Cartes -->
+	<section class="zone"> <!-- Plans -->
+		<h2>Cartes</h2>
+		<div class="grid-container">
+			<div class="grid-item">
+				<img src="images/planville.jpeg" alt="Plan de Cleptocity" class="thumbnail" onclick="openImageModal(this)"> <!-- Plan 1 -->
+				<p>Cleptocity</p>
+			</div>
+			<div class="grid-item">
+				<img src="images/planusine.jpeg" alt="Plan de Clept-Usine" class="thumbnail" onclick="openImageModal(this)"> <!-- Plan 2 -->
+				<p>Clept-Usine</p>
+			</div>
+			<div class="grid-item">
+				<img src="images/planparc.jpeg" alt="Plan de Cleptoparc" class="thumbnail" onclick="openImageModal(this)"> <!-- Plan 3 -->
+				<p>Cleptoparc</p>
+			</div>
+		</div>
+	</section>
+
+
+	<!-- Galerie d'Images -->
+	<section class="zone"> <!-- Galerie générale -->
+		<h2>Galerie d'Images</h2>
+		<div class="grid-container">
+			
+			<div class="grid-item">
+				<img src="images/btn.jpeg" alt="Boite de Nuit" class="thumbnail" onclick="openImageModal(this)"> <!-- Image 1 -->
+				<p>Boite de Nuit</p>
+			</div>
+			
+			<div class="grid-item">
+				<img src="images/clepthotel.jpeg" alt="Clepthotel" class="thumbnail" onclick="openImageModal(this)"> <!-- Image 2 -->
+				<p>Clepthotel</p>
+			</div>
+			
+			<div class="grid-item">
+				<img src="images/clepto-luxe.jpeg" alt="Clepto-Luxe" class="thumbnail" onclick="openImageModal(this)"> <!-- Image 3 -->
+				<p>Clepto-Luxe</p>
+			</div>
+			
+			<div class="grid-item">
+				<img src="images/cleptoparc.jpeg" alt="Cleptoparc" class="thumbnail" onclick="openImageModal(this)"> <!-- Image 3 -->
+				<p>Cleptoparc</p>
+			</div>
+			
+			<div class="grid-item">
+				<img src="images/cdt.jpeg" alt="Centre de téléportation" class="thumbnail" onclick="openImageModal(this)"> <!-- Image 3 -->
+				<p>Centre de téléportation</p>
+			</div>
+			
+			<div class="grid-item">
+				<img src="images/grandeserre.jpeg" alt="La grande serre" class="thumbnail" onclick="openImageModal(this)"> <!-- Image 3 -->
+				<p>La grande serre</p>
+			</div>
+			
+			<div class="grid-item">
+				<img src="images/ecc.jpeg" alt="Entrée du centre commercial de Cleptociy" class="thumbnail" onclick="openImageModal(this)"> <!-- Image 3 -->
+				<p>Entrée du centre commercial de Cleptocity</p>
+			</div>
+			
+			<div class="grid-item">
+				<img src="images/prison.jpeg" alt="La prison" class="thumbnail" onclick="openImageModal(this)"> <!-- Image 3 -->
+				<p>La prison</p>
+			</div>
+			
+		</div>
+	</section>
+	
+	<!-- Modale pour agrandir les images -->
+	<div id="image-modal" class="modal" onclick="closeImageModal(event)">
+		<span class="close" onclick="closeImageModal(event)">&times;</span> <!-- Fermeture -->
+		<img id="modal-image" class="modal-content"> <!-- Image agrandie -->
+	</div>
+
+	<!-- Pied de page -->
+	<footer class="footer">
+		<p>© 2025 WebCleptocity – Explorez les merveilles de Cleptocity.</p> <!-- Message de bas de page -->
+	</footer>
+	
+	<script> // Modale d’image
+		function openImageModal(img) {
+			const modal = document.getElementById('image-modal');
+			const modalImg = document.getElementById('modal-image');
+			modal.style.display = 'flex';
+			modalImg.src = img.src;
+			const modalContent = modal.querySelector('.modal-content');
+			modalContent.style.color = "#FFFFFF"; // Texte blanc
+		}
+
+		function closeImageModal(event) {
+			const modal = document.getElementById('image-modal');
+			if (event.target === modal || event.target.classList.contains('close')) {
+				modal.style.display = 'none'; // Ferme la modale
+			}
+		}
+	</script>
+
+	<script> // Script de scroll pour la navbar
+		let lastScrollTop = 0; // Position précédente
+		const navbar = document.querySelector('.navbar'); // Récupère la navbar
+
+		window.addEventListener('scroll', () => {
+			const scrollTop = window.pageYOffset || document.documentElement.scrollTop; // Scroll actuel
+
+			if (scrollTop > lastScrollTop) {
+				navbar.style.top = '-80px'; // Scroll vers le bas → cache navbar
+			} else {
+				navbar.style.top = '0'; // Scroll vers le haut → affiche navbar
+			}
+
+			lastScrollTop = scrollTop; // Mise à jour
+		});
+	</script>
 
 </body>
 </html>

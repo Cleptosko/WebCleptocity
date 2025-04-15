@@ -1,26 +1,106 @@
-<!DOCTYPE html>
-<html lang="fr">
-<head>
-    <meta charset="utf-8">
-    <title>WebCleptocity - Médias</title>
-    <link rel="stylesheet" href="style.css">
-</head>
-<body>
+<!DOCTYPE html> <!-- Déclare le document HTML5 -->
+<html lang="fr"> <!-- Langue du site : français -->
 
-    <nav class="navbar">
-        <a class="nav-left" href="medias.html">Médias</a>
-        <a class="nav-center" href="index.html">Accueil</a>
-        <a class="nav-right" href="tourisme.html">Tourisme</a>
-    </nav>
+	<head>
+		<meta charset="utf-8"> <!-- Encodage UTF-8 -->
+		<title>Cleptocity - Médias</title> <!-- Titre affiché dans l'onglet -->
+		<link rel="stylesheet" href="style.css"> <!-- Lien vers la feuille de style -->
+	</head>
 
-    <section class="zone banner">
-		<h1>Bienvenue sur le site officiel de la Ville de Cleptocity</h1>
-		<p>Pixelmon n'est qu'une porte à bien plus.</p>
-    </section>
+<body class="page-medias"> <!-- Début du corps du site -->
 
-    <footer class="zone footer">
-        <p>© 2025 WebCleptocity – Plus qu'une simple ville.</p>
-    </footer>
+	<!-- Barre de navigation -->
+	<nav class="navbar"> <!-- Menu de navigation principal -->
+		<div class="nav-left">
+			<img src="images/logo.png" alt="Logo Cleptocity" class="navbar-logo"> <!-- Logo du site -->
+		</div>		
+		
+		<div class="nav-center">
+			<a class="b-medias bouton-vert" href="medias.html">Medias</a> <!-- Lien vers la page Médias -->
+			<a class="b-accueil bouton-vert" href="index.html">Accueil</a> <!-- Lien vers la page d'accueil -->
+			<a class="b-tourisme bouton-vert" href="tourisme.html">Tourisme</a> <!-- Lien vers la page Tourisme -->
+		</div>
+		
+		<div class="nav-right"></div> <!-- ✅ Bloc vide pour équilibrer la mise en page -->
+	</nav>
+
+	<!-- 🖼️ Bloc : .banner — Bannière de la page Médias -->
+	<section class="zone banner"> <!-- Conteneur principal -->
+		<div class="banner-background"></div> <!-- 🌄 Fond commun -->
+		
+		<div class="banner-content"> <!-- 📝 Contenu centré -->
+			<h1 class="banner-title">Bienvenue dans la section <span>Medias</span></h1> <!-- 🧾 Titre -->
+			<p class="banner-subtitle">Les actualités et événements récents.</p> <!-- 📍 Sous-titre -->
+		</div>
+	</section>
+
+
+	<!-- Section Vidéos -->
+	<section id="media-videos" class="zone"> <!-- Section vidéos YouTube -->
+		<h2>Vidéos</h2>
+		<div class="video-container">
+			<div class="video-item">
+				<iframe width="560" height="315" src="https://www.youtube.com/embed/UXHC_0Xr64k" title="YouTube video player 1" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" allowfullscreen class="rounded-frame"></iframe> <!-- Vidéo 1 -->
+			</div>
+			<div class="video-item">
+				<iframe width="560" height="315" src="https://www.youtube.com/embed/cBYYzkYpgEM" title="YouTube video player 2" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" allowfullscreen class="rounded-frame"></iframe> <!-- Vidéo 2 -->
+			</div>
+		</div>
+	</section>
+
+	<!-- Section Affaire -->
+	<section class="zone"> <!-- Partie affaire spéciale -->
+		<h2 style="color: red;">Affaire</h2>
+		<div class="affaire-container">
+			<p class="affaire-text"><span class="zizifieur-highlight">Plongez dans l'histoire captivante du Zizifieur</span></p> <!-- Texte introductif -->
+			<img src="images/zizifieur1.jpeg" alt="Zizifieur 1" class="affaire-image" id="open-modal"> <!-- Image déclencheuse de modale -->
+		</div>
+	</section>
+
+	<!-- Modale du Zizifieur -->
+	<div id="modal" class="modal">
+		<div class="modal-content">
+			<span id="close-modal" class="close" onclick="closeZizifieurModal()">&times;</span> <!-- Bouton fermeture -->
+			<h2>Le Zizifieur</h2>
+			<p>Voici une page où vous pouvez écrire ce que vous voulez concernant le Zizifieur ou autre contenu lié à cette image. Remplissez librement ce texte selon vos besoins !</p> <!-- Contenu libre -->
+		</div>
+	</div>
+
+	<!-- Modale pour agrandir les images -->
+	<div id="image-modal" class="modal" onclick="closeImageModal(event)">
+		<span class="close" onclick="closeImageModal(event)">&times;</span> <!-- Fermeture -->
+		<img id="modal-image" class="modal-content"> <!-- Image agrandie -->
+	</div>
+
+	<!-- Pied de page -->
+	<footer class="footer">
+		<p>© 2025 WebCleptocity – Plus qu'une simple ville.</p> <!-- Copyright -->
+	</footer>
+
+	<script> // Modale Zizifieur
+		const modal = document.getElementById('modal');
+		const openModal = document.getElementById('open-modal');
+		const closeModal = document.getElementById('close-modal');
+
+		openModal.addEventListener('click', () => { modal.style.display = "flex"; }); // Ouvre modale
+		closeModal.addEventListener('click', () => { modal.style.display = "none"; }); // Ferme modale
+		window.addEventListener('click', (event) => { if (event.target === modal) modal.style.display = "none"; }); // Clic extérieur
+		window.onload = function() { modal.style.display = "none"; }; // Cache par défaut
+	</script>
+
+	<script> // Script scroll navbar
+		let lastScrollTop = 0;
+		const navbar = document.querySelector('.navbar');
+		window.addEventListener('scroll', () => {
+			const scrollTop = window.pageYOffset || document.documentElement.scrollTop;
+			if (scrollTop > lastScrollTop) {
+				navbar.style.top = '-80px'; // Cache navbar
+			} else {
+				navbar.style.top = '0'; // Montre navbar
+			}
+			lastScrollTop = scrollTop;
+		});
+	</script>
 
 </body>
 </html>

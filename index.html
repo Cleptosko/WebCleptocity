@@ -1,31 +1,114 @@
-<!DOCTYPE html>
-<html lang="fr">
+<!DOCTYPE html> <!-- Déclare le document HTML5 -->
+<html lang="fr"> <!-- Langue du site : français -->
+
 	<head>
-		<meta charset="utf-8"/>
-		<title>WebCleptocity</title>
-		<link rel="stylesheet" href="style.css"/>
+		<meta charset="utf-8"> <!-- Encodage UTF-8 -->
+		<title>Cleptocity - Accueil</title> <!-- Titre affiché dans l'onglet -->
+		<link rel="stylesheet" href="style.css"> <!-- Lien vers le fichier CSS -->
 	</head>
-<body>
 
-    <nav class="navbar">
-        <a class="nav-left" href="medias.html">Médias</a>
-        <a class="nav-center" href="index.html">Accueil</a>
-        <a class="nav-right" href="tourisme.html">Tourisme</a>
-    </nav>
+<body class="page-accueil"> <!-- Début du corps du site -->
 
-    <section class="zone banner">
-		<div class="banner-background"></div>
-		<div class="banner-contenu">
-			<h1 class="impact-title">
-				<h1>Bienvenue sur le site officiel de la Ville de Cleptocity</h1>
+	<!-- Barre de navigation -->
+	<nav class="navbar"> <!-- Menu de navigation principal -->
+		<div class="nav-left">
+			<img src="images/logo.png" alt="Logo Cleptocity" class="navbar-logo"> <!-- Logo du site -->
+		</div>		
+		
+		<div class="nav-center">
+			<a class="b-medias bouton-vert" href="medias.html">Medias</a> <!-- Lien vers la page Médias -->
+			<a class="b-accueil bouton-vert" href="index.html">Accueil</a> <!-- Lien vers la page d'accueil -->
+			<a class="b-tourisme bouton-vert" href="tourisme.html">Tourisme</a> <!-- Lien vers la page Tourisme -->
+		</div>
+		
+		<div class="nav-right"></div> <!-- ✅ Bloc vide pour équilibrer la mise en page -->
+	</nav>
+
+	<!-- 🖼️ Bloc : .banner — Bannière principale -->
+	<section class="zone banner"> <!-- Conteneur principal de la bannière -->
+		<div class="banner-background"></div> <!-- 🌄 Image de fond animée -->
+  
+		<div class="banner-content"> <!-- 📝 Contenu centré -->
+			<h1 class="banner-title is-accueil"> <!-- 🧾 Titre principal de l'accueil -->
+			Bienvenue à <span>Cleptocity</span>
 			</h1>
-			<p class="impact-subtitle">Pixelmon n'est qu'une porte à bien plus.</p>
-		 </div>
-    </section>
+			<p class="banner-subtitle is-accueil"> <!-- 📍 Slogan secondaire -->
+			Pixelmon n'est qu'une porte à bien plus.
+			</p>
+		</div>
+	</section>
+	
+	<!-- Les Builders -->
+	<section class="zone"> <!-- Section des créateurs de la ville -->
+		<h2>Les <span class="highlight">Builders</span></h2> <!-- Titre de section -->
+		<div class="grid-container"> <!-- Conteneur en grille -->
+			<div class="grid-item"> <!-- Bloc builder 1 -->
+				<h3><span class="highlight">Volosko</span></h3> <!-- Nom -->
+				<img src="images/volosko.png" alt="Volosko" onclick="openImageModal(this)"> <!-- Image du builder -->
+			</div>
+			<div class="grid-item"> <!-- Bloc builder 2 -->
+				<h3><span class="highlight">Firtoks</span></h3> <!-- Nom -->
+				<img src="images/firtoks.png" alt="Firtoks" onclick="openImageModal(this)"> <!-- Image du builder -->
+			</div>
+		</div>
+	</section>
 
-    <footer class="zone footer">
-        <p>© 2025 WebCleptocity – Plus qu'une simple ville.</p>
-    </footer>
+	<!-- Présentation améliorée -->
+	<section class="zone presentation"> <!-- Zone de présentation -->
+		<div class="presentation-container"> <!-- Conteneur du texte -->
+			<h2><span class="highlight">Découvrez Cleptocity</span></h2> <!-- Titre de section -->
+			<p> <!-- Paragraphe descriptif -->
+				Cleptocity est une <span class="highlight">ville fictive fascinante</span>, mêlant modernité et créativité. Grâce au talent des <strong>Builders</strong> comme <span class="highlight">Volosko</span> et <span class="highlight">Firtoks</span>, cette ville est devenue un lieu où chaque <span class="highlight">détail raconte une histoire</span>. Découvrez ses recoins cachés, ses structures uniques et plongez dans une <span class="highlight">ambiance où imagination et exploration</span> se rencontrent.
+			</p>
+			<p> <!-- Deuxième paragraphe -->
+				Que vous soyez <span class="highlight">amateur d'architecture</span>, curieux des mystères ou simplement en quête de découverte, <span class="highlight">Cleptocity</span> saura vous émerveiller. Préparez-vous pour une <span class="highlight">expérience mémorable</span> qui dépasse toutes vos attentes !
+			</p>
+		</div>
+	</section>
+
+	<!-- Pied de page -->
+	<footer class="footer"> <!-- Section pied de page -->
+		<p>© 2025 <span class="highlight">WebCleptocity</span> – Plus qu'une simple ville.</p> <!-- Texte de bas de page -->
+	</footer>
+	
+	<!-- Modale pour agrandir les images -->
+	<div id="image-modal" class="modal" onclick="closeImageModal(event)">
+		<span class="close" onclick="closeImageModal(event)">&times;</span> <!-- Fermeture -->
+		<img id="modal-image" class="modal-content"> <!-- Image agrandie -->
+	</div>
+
+<script> // Modale d’image
+		function openImageModal(img) {
+			const modal = document.getElementById('image-modal');
+			const modalImg = document.getElementById('modal-image');
+			modal.style.display = 'flex';
+			modalImg.src = img.src;
+			const modalContent = modal.querySelector('.modal-content');
+			modalContent.style.color = "#FFFFFF"; // Texte blanc
+		}
+
+		function closeImageModal(event) {
+			const modal = document.getElementById('image-modal');
+			if (event.target === modal || event.target.classList.contains('close')) {
+				modal.style.display = 'none'; // Ferme la modale
+			}
+		}
+	</script>
+	
+	<script> // Script JavaScript pour cacher/afficher la navbar selon le scroll
+		let lastScrollTop = 0; // Position précédente du scroll
+		const navbar = document.querySelector('.navbar'); // Sélectionne la barre de navigation
+
+		window.addEventListener('scroll', () => {
+			const scrollTop = window.pageYOffset || document.documentElement.scrollTop; // Position actuelle
+			if (scrollTop > lastScrollTop) {
+				navbar.style.top = '-80px'; // Scrolling vers le bas : cache la navbar
+			} else {
+				navbar.style.top = '0'; // Scrolling vers le haut : montre la navbar
+			}
+			lastScrollTop = scrollTop; // Mise à jour de la position
+		});
+	</script>
 
 </body>
 </html>

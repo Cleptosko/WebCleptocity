@@ -1,102 +1,429 @@
 /* 🌐 Réglages de base */
 body {
-    margin: 0; 
-    font-family: Arial, sans-serif; 
-    background-image: url(images/caca.jpg); 
-    background-size: cover; 
-    background-position: center; 
-    background-attachment: fixed; 
-    color: #333; 
+    margin: 0; /* Supprime les marges par défaut */
+    font-family: 'Mnormal', Arial, sans-serif; /* Définit la police principale */
+    background-image: url(images/stone.png); /* Image de fond (à renommer plus tard ?) */
+    /* background-size: cover; L’image couvre toute la fenêtre -- pas utilisé */
+    background-position: center; /* Centrage de l’image de fond */
+    background-attachment: fixed; /* L’image reste fixe au scroll */
+    color: #000000; /* Couleur du texte */
+	margin-top: 90px; /* Compense la hauteur de la navbar */
+}
+
+/* 🅰️ Mnormal — Utilisée pour le texte standard */
+@font-face {
+    font-family: 'Mnormal'; /* Nom à utiliser dans le CSS */
+    src: url('polices/Mnormal.ttf') format('truetype'); /* Chemin et format */
+    font-weight: normal;
+    font-style: normal;
+}
+
+/* 🔠 Mgrand — Utilisée pour les titres */
+@font-face {
+    font-family: 'Mgrand'; /* Nom à utiliser dans le CSS */
+    src: url('polices/Mgrand.ttf') format('truetype'); /* Chemin et format */
+    font-weight: bold;
+    font-style: normal;
 }
 
 /* 🔝 Barre de navigation */
 .navbar {
-    display: flex;
-    justify-content: space-between;
-    background-color: #1e1e1e;
-    padding: 15px;
+    display: flex; /* Affiche les éléments horizontalement */
+	justify-content: space-between; /* Écarte les deux blocs (gauche / centre) */
+    align-items: center; /* Centre les éléments verticalement */
+    background-color: #1e1e1e; /* Fond sombre */
+    padding: 10px 30px; /* Espacement intérieur */
+    position: fixed; /* Fixée en haut de la page */
+    top: 0; /* Alignée tout en haut */
+    left: 0; /* Collée à gauche */
+    width: 100%; /* Prend toute la largeur */
+    z-index: 1000; /* Priorité d'affichage élevée */
+    transition: top 0.3s ease; /* Animation lors du scroll */
+	flex-wrap: wrap; /* ✅ Pour permettre l'adaptation en responsive */
 }
 
-.navbar a {
-    color: white;
-    text-decoration: none;
-    padding: 8px 12px;
-    font-weight: bold;
-    border-radius: 4px;
-    transition: background-color 0.3s;
+/* 🖼 Logo dans la navbar */
+.navbar-logo {
+    width: 50px; /* Taille du logo */
+    height: auto; /* Hauteur proportionnelle */
+    cursor: pointer; /* Curseur "main" au survol */
+    transition: opacity 0.3s ease, transform 0.3s ease; /* Effets au survol */
 }
 
-.navbar a:hover {
-    background-color: #333;
+/* 🔍 Logo au survol */
+.navbar-logo:hover {
+    transform: scale(1.1); /* Agrandissement */
+    opacity: 1; /* Opacité maximale */
 }
 
-/* 🧭 Positionnement des onglets */
-.nav-left, 
-.nav-right {
-    width: 40%;
-    text-align: center;
+/* 🧭 Bloc : .nav-left — Conteneur du logo */
+.nav-left {
+    flex: 1; /* Prend l’espace minimum à gauche */
 }
 
+/* 🔗 Bloc : .nav-center — Liens de navigation */
 .nav-center {
-    width: 45%;
-    text-align: center;
+    display: flex;
+    justify-content: center; /* Centre les liens */
+    flex: 2; /* Plus large pour occuper l'espace */
+    flex-wrap: wrap; /* Permet le passage à la ligne sur petits écrans */
 }
 
-/* Paramètre toute les zone en général */
-.zone {
-    padding: 40px 20px; 
-    margin: 20px auto;
-    max-width: 1000px; 
-    background-color: white;
-    border-radius: 10px;
-    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
-    height: auto; 
+/* 🪙 Bloc : .nav-right — Bloc vide pour équilibrer */
+.nav-right {
+    flex: 1; /* Même poids que nav-left, pour équilibrer */
 }
 
-.banner {
-    position: relative;
-    height: 300px;
-    overflow: hidden;
-}
-
-.banner-background {
-    position: absolute;
-    top: 0;
-    left: 0;
-    width: 100%;
-    height: 100%;
-    background-image: url('images/gif.gif');
-    background-size: cover;
-    background-position: center;
-    z-index: 1;
-}
-
-.banner-content {
-    position: relative;
-    z-index: 2;
-    text-align: center;
-    color: white;
-    padding: 80px 20px;
-    text-shadow: 2px 2px 10px rgba(0, 0, 0, 0.8);
-}
-
-.impact-title {
-    font-size: 3rem;
-    font-weight: bold;
-    text-align: center;
-    line-height: 1.2;
-}
+/* ✨ Bloc : liens dans la navbar */
+.nav-center a {
+    display: flex; /* ✅ Permet de centrer le texte verticalement aussi */
+    justify-content: center; /* Centre horizontalement */
+    align-items: center; /* Centre verticalement */
+    width: 140px; /* ✅ Largeur fixe identique pour tous les boutons */
+    height: 20px; /* ✅ Hauteur uniforme */
 	
+	color: #FFFFFF;
+    text-decoration: none;
+    padding: 10px 20px;
+    font-size: 120%;
+    font-weight: bold;
+    border-radius: 5px;
+    margin: 3px 6px;
+    transition: background-color 0.3s ease, transform 0.2s ease;
+}
+
+.nav-center a.b-accueil {
+    padding: 10px 30px;	
+}
+
+/* ✅ Styles communs aux boutons Medias et Tourisme */
+.nav-center a.b-medias,
+.nav-center a.b-tourisme {
+    padding: 10px 10px;
+}
+
+/* 🎯 Effet au survol */
+.nav-center a:hover {
+    background-color: #32CD32;
+    transform: scale(1.1);
+}
+
+/* 🖼️ Bloc : .banner — Conteneur principal de la bannière */
+.banner {
+    position: relative; /* Permet de positionner les éléments internes en absolu */
+    height: 300px; /* Hauteur fixe de la bannière */
+    overflow: hidden; /* Coupe tout ce qui dépasse du conteneur */
+    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.4); /* Ajoute une ombre sous la bannière */
+}
+
+/* 🌄 Bloc : .banner-background — Image de fond de la bannière */
+.banner-background {
+    background-image: url("images/gif.gif"); /* Image de fond commune à toutes les bannières */
+    position: absolute; /* Positionnée par rapport à .banner */
+    top: 0; /* Collée en haut */
+    left: 0; /* Collée à gauche */
+    width: 100%; /* Prend toute la largeur */
+    height: 100%; /* Prend toute la hauteur */
+    background-size: cover; /* Couvre toute la zone sans déformation */
+    background-position: center; /* Centrée horizontalement et verticalement */
+    filter: brightness(0.8); /* Assombrit l'image pour que le texte ressorte mieux */
+    z-index: 1; /* Placée derrière le contenu */
+}
+
+/* 📝 Bloc : .banner-content — Contenu texte de la bannière */
+.banner-content {
+    position: relative; /* Permet de placer ce bloc au-dessus du fond */
+    z-index: 2; /* Au-dessus de l’image de fond */
+    text-align: center; /* Centrage horizontal du texte */
+    padding: 10px; /* Espacement intérieur */
+    max-width: 80%; /* Limite la largeur pour éviter que le texte soit trop large */
+    margin: 0 auto; /* Centre le contenu horizontalement */
+    font-family: 'Arial Black', sans-serif; /* Police grasse pour impact visuel */
+}
+
+/* 🧾 Bloc : .banner-title — Titre principal des bannières */
+.banner-title {
+    font-size: 3.5rem; /* Très grande taille pour capter l’attention */
+    font-weight: bold; /* Texte en gras */
+    text-transform: uppercase; /* Convertit tout le texte en majuscules */
+    color: #FFFFFF; /* Couleur blanche pour le contraste */
+    letter-spacing: 3px; /* Espacement entre les lettres pour un effet stylisé */
+    text-shadow: 2px 2px 10px rgba(0, 0, 0, 0.5); /* Ajoute une ombre pour améliorer la lisibilité */
+}
+
+/* ✨ Bloc : .banner-title span / .highlight — Mise en valeur d’un mot dans le titre */
+.banner-title span,
+.banner-title .highlight {
+    color: #32CD32; /* Vert fluo pour attirer l’œil */
+	font-family: 'Mgrand', sans-serif; /* ✨ Titre avec police grand format */
+    text-shadow: 0 0 10px rgba(0, 128, 0, 0.5); /* Halo lumineux vert autour du texte */
+}
+
+/* ❤️ Bloc : .banner-title.is-accueil — Variation spéciale pour le titre de la page d’accueil */
+.banner-title.is-accueil span {
+    color: #f93713; /* Rouge-orangé plus vibrant pour démarquer l'accueil */
+	font-family: 'Mgrand', sans-serif; /* ✨ Titre avec police grand format */
+    text-shadow: 0 0 10px rgba(0, 0, 0, 1); /* Ombre noire intense pour le contraste */
+}
+
+/* 📍 Bloc : .banner-subtitle — Sous-titre sous le titre principal */
+.banner-subtitle {
+    font-size: 1.8rem; /* Taille lisible mais moins grande que le titre */
+    margin-top: 15px; /* Espacement au-dessus */
+    color: #32CD32; /* Couleur verte harmonieuse */
+    font-weight: 400; /* Poids normal (non gras) */
+    text-transform: uppercase; /* Met tout en majuscules pour garder l’uniformité */
+}
+
+/* 💎 Bloc : .banner-subtitle.is-accueil — Variation de style pour le sous-titre de l’accueil */
+.banner-subtitle.is-accueil {
+    color: #b4e8fd; /* Bleu clair pour contraste doux avec le fond */
+    text-shadow: 0 0 10px rgba(0, 128, 0, 0.5); /* Légère lueur verte pour cohérence visuelle */
+}
+
+/* 💥 Titre principal général (page accueil) */
+.impact-title {
+    font-size: 3rem; /* Taille importante */
+    font-weight: bold; /* Gras */
+    text-transform: uppercase; /* Majuscules */
+    color: #FFFFFF; /* Couleur blanche */
+    letter-spacing: 3px; /* Espacement des lettres */
+    text-shadow: 2px 2px 10px rgba(0, 0, 0, 0.5); /* Ombre pour le contraste */
+}
+
+/* 🌟 Mot mis en valeur dans le titre principal */
+.impact-title .highlight {
+    color: #f93713; /* Vert lumineux */
+    text-shadow: 0 0 10px rgba(0, 0, 0, 1); /* Effet de lueur autour du mot */
+}
+
+/* 🧾 Sous-titre impactant */
 .impact-subtitle {
-    font-size: 1.5rem;
-    margin-top: 15px;
+    font-size: 1.6rem; /* Taille adaptée au sous-titre */
+    margin-top: 10px; /* Espace avant le sous-titre */
+    color: #000000; /* Texte noir pour un bon contraste */
+    font-weight: 400; /* Poids standard */
+    text-transform: uppercase; /* Texte en majuscules */
+}
+
+/* 🧾 Slogan supplémentaire */
+.additional-subtitle {
+    font-size: 1.4rem; /* Taille intermédiaire */
+    margin-top: 15px; /* Espace vertical avant le texte */
+    color: #b4e8fd; /* Couleur verte lumineuse */
+    font-weight: 400; /* Poids standard */
+    text-transform: uppercase; /* Tout en majuscules */
+    text-shadow: 0 0 10px rgba(0, 128, 0, 0.5); /* Effet de brillance verte */
+    text-align: center; /* Centrage horizontal du texte */
+}
+
+/* 📦 Zone de contenu principale */
+.zone {
+    padding: 40px 30px; /* Espace intérieur autour du contenu */
+    margin: 20px auto; /* Marge extérieure avec centrage horizontal */
+    max-width: 1000px; /* Largeur maximale pour un bon confort de lecture */
+    border-radius: 12px; /* Coins arrondis */
+	background: grey;
+    box-shadow: 0 0 12px rgba(0, 0, 0, 0.2); /* Ombre légère pour le relief */
+    transition: transform 0.3s ease; /* Animation fluide au survol */
+}
+
+/* 🏠 Bloc : .zone dans la page d'accueil */
+.page-accueil .zone {
+    background-image: url("images/planche.png"); /* fond de bric minecraft */
+}
+
+/* 🎥 Bloc : .zone dans la page Médias */
+.page-medias .zone {
+    background-image: url("images/planche.png"); /* fond de pierre minecraft */
+}
+
+/* 🧭 Bloc : .zone dans la page Tourisme */
+.page-tourisme .zone {
+    background-image: url("images/planche.png"); /* fond de planche minecraft */
+}
+
+/* 🔍 Effet de zoom au survol */
+.zone:hover {
+    transform: scale(1.02); /* Agrandissement léger lors du survol */
+}
+
+/* 🎞️ Conteneur de vidéos */
+.video-container {
+    display: flex; /* Affichage en ligne */
+    justify-content: space-around; /* Répartition équitable */
+    flex-wrap: wrap; /* Retour à la ligne si besoin */
+    gap: 20px; /* Espace entre les vidéos */
+    margin: 20px auto; /* Marge verticale et centrage horizontal */
+}
+
+/* 📺 Conteneur individuel de vidéo */
+.video-item {
+    border-radius: 15px; /* Coins arrondis */
+    overflow: hidden; /* Cache les débordements (par ex. ombres, bordures) */
+    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.3); /* Ombre sous les vidéos */
+}
+
+/* 🖼️ Cadre arrondi pour les iframes vidéo */
+.rounded-frame {
+    border-radius: 0px; /* Coins arrondis */
+    width: 100%; /* Prend toute la largeur du conteneur parent */
+    height: auto; /* Hauteur auto */
+}
+
+/* 🕵️‍♂️ Texte principal d'une section "Affaire" */
+.affaire-text {
+    text-align: center; /* Texte centré */
+    font-size: 1.5rem; /* Taille agréable pour une lecture */
+    line-height: 1.8; /* Hauteur de ligne pour l’aération */
+    color: #000000; /* Texte noir */
+}
+
+/* 📚 Conteneur de la section Affaire */
+.affaire-container {
+    display: flex; /* Mise en ligne des éléments */
+    flex-direction: column; /* Colonne verticale */
+    align-items: center; /* Centrage horizontal */
+    justify-content: center; /* Centrage vertical */
+    gap: 20px; /* Espace entre les enfants */
+    margin-top: 20px; /* Espace avant cette section */
+}
+
+/* 🖼 Image dans la section Affaire */
+.affaire-image {
+    width: 100%; /* Prend toute la largeur du parent */
+    max-width: 500px; /* Largeur max pour éviter qu’elle ne devienne trop grande */
+    border-radius: 10px; /* Coins arrondis */
+    box-shadow: 0 0 20px rgba(0, 0, 0, 0.4); /* Ombre légère */
+    transition: transform 0.3s ease, box-shadow 0.3s ease; /* Animation fluide */
+}
+
+/* 💫 Effet sur l'image au survol */
+.affaire-image:hover {
+    transform: scale(1.1); /* Zoom doux */
+    box-shadow: 0 0 30px rgba(0, 0, 0, 0.8); /* Ombre plus prononcée */
+}
+
+/* 🪟 Fenêtre modale générale */
+.modal {
+    display: none; /* Masquée par défaut */
+    position: fixed; /* Par-dessus tout le contenu */
+    top: 0; /* Alignée en haut */
+    left: 0; /* Alignée à gauche */
+    width: 100%; /* Largeur totale */
+    height: 100%; /* Hauteur totale */
+    background-color: rgba(0, 0, 0, 0.8); /* Fond noir transparent */
+    backdrop-filter: blur(10px); /* Flou en arrière-plan */
+    justify-content: center; /* Centre le contenu horizontalement */
+    align-items: center; /* Centre verticalement */
+    z-index: 1000; /* Priorité maximale */
+}
+
+/* 🧩 Contenu interne de la modale */
+.modal-content {
+    max-width: 90%; /* Largeur maximale */
+    max-height: 90%; /* Hauteur maximale */
+    border-radius: 10px; /* Coins arrondis */
+    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.5); /* Ombre marquée */
+    text-align: center; /* Centré */
+    background: #FFFFFF; /* Fond blanc */
+}
+
+/* ❌ Bouton de fermeture */
+.close {
+    position: absolute; /* Placé en haut à droite */
+    top: 10px;
+    right: 20px;
+    font-size: 2rem; /* Taille du "×" */
+    color: #FFFFFF; /* Blanc */
+    cursor: pointer; /* Curseur main */
+    transition: transform 0.2s ease; /* Effet doux au survol */
+}
+
+/* 🟥 Fermeture au survol */
+.close:hover {
+    transform: scale(1.2); /* Légère animation zoom */
+    color: #FF0000; /* Passe au rouge */
+}
+
+/* 🖼️ Image cliquable (vignette) */
+.thumbnail {
+    width: 100%; /* Largeur totale */
+    border-radius: 8px; /* Coins arrondis */
+    cursor: pointer; /* Curseur interactif */
+    transition: transform 0.3s ease, box-shadow 0.3s ease; /* Animation douce */
+}
+
+/* 🔎 Zoom sur vignette */
+.thumbnail:hover {
+    transform: scale(1.05); /* Légère mise en valeur */
+    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.5); /* Ombre accentuée */
+}
+
+/* 🧱 Grille de présentation */
+.grid-container {
+    display: flex; /* Affichage en ligne */
+    justify-content: space-between; /* Éléments espacés équitablement */
+    gap: 20px; /* Espace entre les éléments */
+    margin-top: 20px; /* Espace au-dessus */
+}
+
+/* 📦 Élément individuel de la grille */
+.grid-item {
+    flex: 1; /* Prend la même place que les autres */
+    text-align: center; /* Centre les titres et textes */
+}
+
+/* 🖼️ Image dans un bloc de grille */
+.grid-item img {
+    width: 100%; /* Prend tout l’espace disponible */
+    max-width: 250px; /* Largeur max pour limiter la taille */
+    border-radius: 8px; /* Coins arrondis */
+    box-shadow: 0 0 15px rgba(0, 0, 0, 0.3); /* Ombre discrète */
+    transition: transform 0.3s ease; /* Animation douce */
+}
+
+/* 🔎 Zoom au survol sur image de grille */
+.grid-item img:hover {
+    transform: scale(1.05); /* Zoom visuel */
+    box-shadow: 0 0 20px rgba(0, 0, 0, 0.3); /* Ombre plus marquée */
+}
+
+/* 📝 Légende sous image */
+.grid-item p {
+    margin-top: 10px; /* Espace au-dessus du texte */
+    font-size: 1.2rem; /* Taille moyenne */
+    color: #000000; /* Texte noir */
+}
+
+/* 📱 Responsive : Navbar adaptée aux petits écrans */
+@media (max-width: 600px) {
+    .navbar {
+        flex-direction: column; /* 🔁 Les éléments passent à la verticale */
+        padding: 10px 15px;
+    }
+
+    .navbar a {
+        margin: 5px 0; /* ⬇️ Espacement vertical entre les liens */
+        font-size: 1rem; /* 🔠 Texte plus petit sur mobile */
+    }
+
+    .navbar-logo {
+        margin-bottom: 10px; /* 🧼 Espace sous le logo */
+    }
+	
+	.nav-center a {
+        width: 100%; /* 🔄 Prend toute la largeur du parent */
+        max-width: 200px; /* Limite la taille sur mobile */
+    }
 }
 
 /* 🦶 Pied de page */
 .footer {
-    text-align: center;
-    font-size: 80%;
-    color: #666;
-    background-color: #f1f1f1;
-    padding: 10px 0px;
+    text-align: center; /* Centré */
+    color: white; /* Texte noir */
+	box-shadow: 0 0 20px rgba(0, 0, 0, 1); /* Ombre légère */
+    background-image: url("images/bedrock.png"); /* fond bedrock */
+    padding: 15px; /* Espacement intérieur */
+    font-size: 100%; /* Taille standard */
 }
